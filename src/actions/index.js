@@ -22,6 +22,6 @@ export function* onFetchData(action) {
 function onFetchDataSuccess(data) {
   return {
     type: actionTypes.FETCH_DATA,
-    payload: data
+    payload: data.results
   };
 }
