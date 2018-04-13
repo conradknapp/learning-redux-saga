@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 import { connect } from "react-redux";
-import { onFetchData } from "../actions/index";
+import { fetchData } from "../actions/index";
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         Redux Saga
         {/* {this.props.data.people.map((el, i) => <h3 key={i}>{el.name}</h3>)} */}
-        <button onClick={this.props.onFetchData}>Get Data</button>
+        <button onClick={this.props.fetchData}>Get Data</button>
       </div>
     );
   }
@@ -22,5 +22,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  onFetchData
+  fetchData
 })(App);

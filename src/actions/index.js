@@ -3,18 +3,25 @@ import { call, put } from "redux-saga/effects";
 
 const api = url => fetch(url).then(res => res.json());
 
-export const onFetchData = () => {
+export const fetchData = () => {
   return {
     type: actionTypes.FETCH_DATA
   };
 };
 
-export function* fetchData(action) {
+export function* onFetchData(action) {
   try {
-    const data = yield call(api, "https://swapi.co/api/people");
+    const response = yield call(api, "https://swapi.co/api/people");
 
-    yield put({ type: actionTypes.FETCH_DATA, data: data.results });
+    yield put(onFetchDataSuccess(response));
   } catch (err) {
     console.warn(err);
   }
+}
+
+function onFetchDataSuccess(data) {
+  return {
+    type: actionTypes.FETCH_DATA,
+    payload: data
+  };
 }
